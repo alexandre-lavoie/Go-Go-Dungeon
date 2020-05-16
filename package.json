@@ -1,0 +1,38 @@
+{
+  "name": "concordiamakesgames",
+  "version": "1.0.0",
+  "description": "Repository for Concordia Makes Game Game Jam",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"nodemon --exec npm run build-game\" \"ts-node-dev --project tsconfig.express.json express/index.ts\"",
+    "build-game": "tsc --p tsconfig.game.json && uglifyjs --compress --output build/game/index.min.js -- build/game/index.js",
+    "build-express": "tsc --p tsconfig.express.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandre-lavoie/ConcordiaMakesGames.git"
+  },
+  "author": "Alexandre Lavoie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexandre-lavoie/ConcordiaMakesGames/issues"
+  },
+  "homepage": "https://github.com/alexandre-lavoie/ConcordiaMakesGames#readme",
+  "dependencies": {
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "phaser": "^3.23.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/socket.io": "^2.1.4",
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.1",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3",
+    "uglify-js": "^3.9.3"
+  }
+}
