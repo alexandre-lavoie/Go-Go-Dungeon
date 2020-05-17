@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="20">
+ <editorsettings>
+  <export target="../assets/maps/boss/270/0.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="tilemap" tilewidth="16" tileheight="16" tilecount="72" columns="9">
+  <image source="../assets/tilemap.png" width="144" height="128"/>
+ </tileset>
+ <tileset firstgid="73" name="sprite" tilewidth="16" tileheight="16" tilecount="252" columns="28">
+  <image source="../assets/spritesheet.png" width="448" height="144"/>
+ </tileset>
+ <tileset firstgid="325" name="tilemap" tilewidth="16" tileheight="16" tilecount="72" columns="9">
+  <image source="../assets/tilemap.png" width="144" height="128"/>
+ </tileset>
+ <tileset firstgid="397" name="sprite" tilewidth="16" tileheight="16" tilecount="252" columns="28">
+  <image source="../assets/spritesheet.png" width="448" height="144"/>
+ </tileset>
+ <layer id="2" name="Background" width="16" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,43,43,43,54,43,43,43,43,43,0,
+0,0,0,0,0,0,16,17,17,17,17,17,17,17,18,0,
+0,0,0,0,0,0,25,12,12,12,12,21,12,12,27,0,
+0,0,0,0,0,0,25,12,22,12,12,12,12,12,27,0,
+43,43,43,52,43,43,25,12,13,12,12,12,12,12,27,0,
+17,17,17,17,17,17,34,12,13,22,12,12,21,12,27,0,
+12,22,12,12,12,12,12,12,22,12,12,12,12,22,27,0,
+12,12,12,21,12,22,12,12,22,12,12,12,12,12,27,0,
+12,12,12,12,12,12,12,12,12,21,12,13,12,22,27,0,
+0,0,0,0,0,0,25,12,12,12,12,13,12,12,27,0,
+0,0,0,0,0,0,25,12,12,12,12,13,12,12,27,0,
+0,0,0,0,0,0,25,12,12,22,12,12,12,12,27,0,
+0,0,0,0,0,0,25,12,12,12,12,12,12,22,27,0,
+0,0,0,0,0,0,25,12,12,12,12,12,12,12,27,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="Midground" width="16" height="16">
+  <data encoding="csv">
+0,0,0,0,0,37,37,37,37,37,37,37,37,37,37,37,
+0,0,0,0,0,37,14,0,14,0,0,0,14,14,0,37,
+0,0,0,0,0,37,0,0,0,0,0,0,0,0,0,37,
+0,0,0,0,0,37,0,0,0,0,0,0,0,0,0,37,
+37,37,37,37,37,37,0,0,0,0,0,0,0,0,0,37,
+0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,37,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,37,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,37,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,37,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,37,
+37,37,37,37,37,37,0,0,0,0,0,0,0,0,0,37,
+0,0,0,0,0,37,0,0,0,0,0,0,0,0,0,37,
+0,0,0,0,0,37,0,0,0,0,0,0,0,0,0,37,
+0,0,0,0,0,37,0,0,0,0,0,0,0,0,0,37,
+0,0,0,0,0,37,0,0,0,0,0,0,0,0,0,37,
+0,0,0,0,0,37,37,37,37,37,37,37,37,37,37,37
+</data>
+ </layer>
+ <objectgroup id="4" name="Sprites">
+  <object id="2" name="Goblin" gid="101" x="109.448" y="195.201" width="16" height="16"/>
+  <object id="3" name="Goblin" gid="101" x="109.745" y="81.6283" width="16" height="16"/>
+  <object id="5" name="Goblin" gid="101" x="210.5" y="194.008" width="16" height="16"/>
+  <object id="6" name="Torch" gid="163" x="224.212" y="32.1454" width="16" height="16"/>
+  <object id="7" name="Torch" gid="163" x="14.953" y="94.4462" width="16" height="16"/>
+  <object id="8" name="Torch" gid="163" x="113.025" y="30.3568" width="16" height="16"/>
+  <object id="9" name="Torch" gid="163" x="65.9257" y="95.6386" width="16" height="16"/>
+  <object id="10" name="Chest" gid="107" x="158.632" y="210.999" width="16" height="16"/>
+  <object id="11" name="Goblin" gid="101" x="213.183" y="77.85" width="16" height="16"/>
+  <object id="12" name="Chest" gid="107" x="159.229" y="79.6385" width="16" height="16"/>
+  <object id="13" name="Exit" gid="353" x="167.873" y="140.65" width="16" height="16"/>
+  <object id="15" name="Slime" gid="157" x="167.575" y="139.16" width="16" height="16"/>
+  <object id="16" name="Goblin" gid="101" x="135.68" y="65.9264" width="16" height="16"/>
+  <object id="17" name="Goblin" gid="101" x="134.487" y="215.568" width="16" height="16"/>
+  <object id="18" name="Goblin" gid="101" x="187.249" y="65.9264" width="16" height="16"/>
+  <object id="19" name="Goblin" gid="101" x="186.951" y="216.164" width="16" height="16"/>
+ </objectgroup>
+ <layer id="5" name="Foreground" width="16" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,56,57,57,57,57,57,57,57,57,40,
+0,0,0,0,0,0,49,0,0,0,0,0,0,0,0,49,
+0,0,0,0,0,0,49,0,0,0,0,0,0,0,0,49,
+0,0,0,0,0,0,49,0,0,0,0,0,0,0,0,49,
+57,57,57,57,57,57,58,0,0,0,0,0,0,0,0,49,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49,
+66,66,66,66,66,66,40,0,0,0,0,0,0,0,0,49,
+0,0,0,0,0,0,49,0,0,0,0,0,0,0,0,49,
+0,0,0,0,0,0,49,0,0,0,0,0,0,0,0,49,
+0,0,0,0,0,0,49,0,0,0,0,0,0,0,0,49,
+0,0,0,0,0,0,49,0,0,0,0,0,0,0,0,49,
+0,0,0,0,0,0,65,66,66,66,66,66,66,66,66,58,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

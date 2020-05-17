@@ -7,20 +7,35 @@ interface GameObjectBody {
 
 class Player extends Phaser.GameObjects.Sprite implements GameObjectBody {
 
+    public static readonly FULL_HEALTH = 4;
     public static colliders: Phaser.Physics.Arcade.Group;
     public static keyboard: any;
     public isMainPlayer: boolean;
-    public color: string;
+    private color: string;
     private isHit: boolean;
+    private isInvinsible: boolean;
+    private spawn: Phaser.Math.Vector2;
+    public health: number;
+    public group: Phaser.GameObjects.Group;
 
     constructor(scene: Phaser.Scene, x: number, y: number, color: string = 'green', isMainPlayer: boolean = false) {
         super(scene, x, y, SPRITESHEET.KNIGHT[color].key);
 
+        this.spawn = new Phaser.Math.Vector2(x, y);
+
+        this.health = Player.FULL_HEALTH;
+
         this.color = color;
+
+        this.group = new Phaser.GameObjects.Group(scene);
+
+        this.group.add(this);
 
         this.isMainPlayer = isMainPlayer;
 
         this.isHit = false;
+
+        this.isInvinsible = false;
 
         this.anims.load(SPRITESHEET.KNIGHT[color].animation.key);
 
@@ -40,7 +55,17 @@ class Player extends Phaser.GameObjects.Sprite implements GameObjectBody {
 
         Player.colliders.add(this);
 
+        new Healthbar(scene, this);
+
         scene.add.existing(this);
+    }
+
+    public changeColor(color) {
+        this.anims.load(SPRITESHEET.KNIGHT[color].animation.key);
+        this.anims.load(SPRITESHEET.KNIGHT[color].RUN.animation.key);
+        this.anims.play(SPRITESHEET.KNIGHT[color].animation.key);
+
+        this.color = color;
     }
 
     public update() {
@@ -85,48 +110,94 @@ class Player extends Phaser.GameObjects.Sprite implements GameObjectBody {
         }
     }
 
+    public heal() {
+        this.health = Math.min(this.health + 1, Player.FULL_HEALTH);
+    }
+
     public setHit() {
-        if(!this.isHit) {
-            this.isHit = true;
+         if(!this.isHit && !this.isInvinsible) {
+            this.health -= 1;
 
-            new Hit(this.scene, this.x, this.y);
-
-            this.scene.sound.add(AUDIO.KNIGHT.HURT.key, {
-                volume: 0.25,
-                rate: 1.2
-            }).play();
+            if(this.health <= 0) {
+                new Poof(this.scene, this.x, this.y);
     
-            this.scene.time.delayedCall(200, () => {
-                this.isHit = false;
-            });
+                this.setX(this.spawn.x);
+                this.setY(this.spawn.y);
+    
+                this.scene.sound.add(AUDIO.KNIGHT.DEATH.key, {
+                    volume: 0.25
+                }).play();
+
+                if (this.body instanceof Phaser.Physics.Arcade.Body) {
+                    this.scene.cameras.main.setLerp(0, 0);
+
+                    this.scene.time.delayedCall(500, () => {
+                        this.scene.cameras.main.setLerp(0.1, 0.1);
+                    });
+
+                    this.body.setVelocity(0);
+                }
+    
+                this.health = Player.FULL_HEALTH;
+            } else {
+                this.isHit = true;
+                this.isInvinsible = true;
+    
+                new Hit(this.scene, this.x, this.y);
+    
+                this.scene.sound.add(AUDIO.KNIGHT.HURT.key, {
+                    volume: 0.25
+                }).play();
+        
+                this.scene.time.delayedCall(200, () => {
+                    this.isHit = false;
+                });
+    
+                this.scene.time.delayedCall(500, () => {
+                    this.isInvinsible = false;
+                });
+            }
         }
     }
 
     private updateControl() {
-        if (this.body instanceof Phaser.Physics.Arcade.Body && !this.isHit) {
-            this.body.setVelocity(0);
+        if (this.body instanceof Phaser.Physics.Arcade.Body) {
+            if(!this.isHit) {
+                this.body.setVelocity(0);
 
-            if (Player.keyboard.left.isDown || Player.keyboard.leftleft.isDown) {
-                this.body.setVelocityX(-1);
+                if (Player.keyboard.left.isDown || Player.keyboard.leftleft.isDown) {
+                    this.body.setVelocityX(-1);
+                }
+    
+                if (Player.keyboard.right.isDown || Player.keyboard.rightright.isDown) {
+                    this.body.setVelocityX(1);
+                }
+    
+                if (Player.keyboard.up.isDown || Player.keyboard.upup.isDown) {
+                    this.body.setVelocityY(-1);
+                }
+    
+                if (Player.keyboard.down.isDown || Player.keyboard.downdown.isDown) {
+                    this.body.setVelocityY(1);
+                }
+    
+                if(Player.keyboard.run.isDown) {
+                    this.body.velocity.normalize().scale(90);
+                } else {
+                    this.body.velocity.normalize().scale(70);
+                }
             }
 
-            if (Player.keyboard.right.isDown || Player.keyboard.rightright.isDown) {
-                this.body.setVelocityX(1);
+            if(this.scene.input.keyboard.checkDown(Player.keyboard.bomb, 1000)) {
+                new Bomb(this.scene, this.x + 8, this.y + 8, this.body.velocity);
             }
 
-            if (Player.keyboard.up.isDown || Player.keyboard.upup.isDown) {
-                this.body.setVelocityY(-1);
+            if (this.scene.input.keyboard.checkDown(Player.keyboard.space, 500)) {
+                let direction = this.body.velocity.clone().normalize();
+                direction.scale(30);
+
+                new Slash(this.scene, this.x + 8 + direction.x, this.y + 8 + direction.y, direction);
             }
-
-            if (Player.keyboard.down.isDown || Player.keyboard.downdown.isDown) {
-                this.body.setVelocityY(1);
-            }
-
-            this.body.velocity.normalize().scale(50);
-        }
-
-        if (this.scene.input.keyboard.checkDown(Player.keyboard.space, 1000)) {
-            new Bomb(this.scene, this.x, this.y);
         }
     }
 }

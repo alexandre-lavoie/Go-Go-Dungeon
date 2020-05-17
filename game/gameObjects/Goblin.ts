@@ -1,13 +1,14 @@
-interface GameObjectBody {
-    body: Phaser.Physics.Arcade.Body | object
-}
-
-class Goblin extends Phaser.GameObjects.Sprite implements GameObjectBody {
+class Goblin extends Phaser.GameObjects.Sprite {
 
     public static colliders: Phaser.Physics.Arcade.Group;
+    public health: number;
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
         super(scene, x, y, SPRITESHEET.GOBLIN.key);
+
+        this.health = 1;
+
+        new Healthbar(scene, this);
 
         this.anims.load(SPRITESHEET.GOBLIN.RUN.animation.key);
 
@@ -39,7 +40,7 @@ class Goblin extends Phaser.GameObjects.Sprite implements GameObjectBody {
             if(vector.length() < 100) {
                 this.body.setVelocity(vector.x, vector.y);
 
-                this.body.velocity.normalize().scale(20);
+                this.body.velocity.normalize().scale(40);
             } else {
                 this.body.setVelocity(0, 0);
             }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="15">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="18">
  <editorsettings>
   <export target="../assets/maps/donut/map.json" format="json"/>
  </editorsettings>
@@ -63,6 +63,9 @@
   <object id="12" name="Torch" gid="163" x="143.43" y="31.8472" width="16" height="16"/>
   <object id="13" name="Torch" gid="163" x="207.519" y="27.3759" width="16" height="16"/>
   <object id="14" name="Torch" gid="163" x="19.7224" y="30.0587" width="16" height="16"/>
+  <object id="15" name="Goblin" gid="101" x="144.324" y="218.847" width="16" height="16"/>
+  <object id="16" name="Goblin" gid="101" x="27.7708" y="183.97" width="16" height="16"/>
+  <object id="17" name="Goblin" gid="101" x="107.063" y="59.9646" width="16" height="16"/>
  </objectgroup>
  <layer id="5" name="Foreground" width="16" height="16">
   <data encoding="csv">

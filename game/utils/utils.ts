@@ -16,7 +16,7 @@ function bitArrayToInt(arr: number[]) {
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
-  }
+}
 
 /**
  * Code taken from https://github.com/dstromberg2/maze-generator

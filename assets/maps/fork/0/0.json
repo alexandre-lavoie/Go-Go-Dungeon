@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"0.json"
+        }
+    },
  "height":16,
  "infinite":false,
  "layers":[
@@ -114,6 +122,42 @@
                  "width":16,
                  "x":121.669,
                  "y":134.688
+                }, 
+                {
+                 "gid":101,
+                 "height":16,
+                 "id":20,
+                 "name":"Goblin",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":76.6576618537494,
+                 "y":124.054028877503
+                }, 
+                {
+                 "gid":101,
+                 "height":16,
+                 "id":21,
+                 "name":"Goblin",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112.428504890545,
+                 "y":155.94969725198
+                }, 
+                {
+                 "gid":101,
+                 "height":16,
+                 "id":22,
+                 "name":"Goblin",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":166.084769445738,
+                 "y":129.419655333023
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -134,7 +178,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":20,
+ "nextobjectid":23,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.3.4",

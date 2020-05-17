@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="20">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="24">
  <tileset firstgid="1" name="tilemap" tilewidth="16" tileheight="16" tilecount="72" columns="9">
   <image source="../assets/tilemap.png" width="144" height="128"/>
  </tileset>
@@ -56,6 +56,10 @@
   <object id="8" name="Torch" gid="163" x="-0.249651" y="95.3405" width="16" height="16"/>
   <object id="9" name="Torch" gid="163" x="141.641" y="30.6549" width="16" height="16"/>
   <object id="10" name="Chest" gid="107" x="121.669" y="134.688" width="16" height="16"/>
+  <object id="20" name="Goblin" gid="101" x="158.633" y="129.718" width="16" height="16"/>
+  <object id="21" name="Goblin" gid="101" x="69.2054" y="128.525" width="16" height="16"/>
+  <object id="22" name="Goblin" gid="101" x="111.534" y="99.6106" width="16" height="16"/>
+  <object id="23" name="Goblin" gid="101" x="125.843" y="169.364" width="16" height="16"/>
  </objectgroup>
  <layer id="5" name="Foreground" width="16" height="16">
   <data encoding="csv">

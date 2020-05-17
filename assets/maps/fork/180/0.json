@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"0.json"
+        }
+    },
  "height":16,
  "infinite":false,
  "layers":[
@@ -52,8 +60,8 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":118.986,
-                 "y":66.4257
+                 "x":112.428012109921,
+                 "y":99.5137298090359
                 }, 
                 {
                  "gid":101,
@@ -100,8 +108,8 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":-0.249651,
-                 "y":95.3405
+                 "x":16.145318725198,
+                 "y":95.63859035864
                 }, 
                 {
                  "gid":163,
@@ -126,6 +134,42 @@
                  "width":16,
                  "x":121.669,
                  "y":134.688
+                }, 
+                {
+                 "gid":101,
+                 "height":16,
+                 "id":20,
+                 "name":"Goblin",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":119.284583139264,
+                 "y":61.4550535631113
+                }, 
+                {
+                 "gid":101,
+                 "height":16,
+                 "id":21,
+                 "name":"Goblin",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":70.3977643223102,
+                 "y":122.563577084304
+                }, 
+                {
+                 "gid":101,
+                 "height":16,
+                 "id":22,
+                 "name":"Goblin",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":163.103865859339,
+                 "y":138.064275733582
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -145,8 +189,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":6,
- "nextobjectid":20,
+ "nextlayerid":7,
+ "nextobjectid":23,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.3.4",

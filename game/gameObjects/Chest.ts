@@ -1,6 +1,6 @@
 /// <reference path="./Explosion.ts" />
 
-class Chest extends Phaser.GameObjects.Sprite implements GameObjectBody {
+class Chest extends Phaser.GameObjects.Sprite {
 
     public static colliders: Phaser.Physics.Arcade.Group;
 
