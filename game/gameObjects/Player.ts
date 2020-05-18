@@ -137,8 +137,11 @@ class Player extends Phaser.GameObjects.Sprite implements GameObjectBody {
                 if (this.body instanceof Phaser.Physics.Arcade.Body) {
                     this.scene.cameras.main.setLerp(0, 0);
 
+                    this.setVisible(false);
+
                     this.scene.time.delayedCall(500, () => {
                         this.scene.cameras.main.setLerp(0.1, 0.1);
+                        this.setVisible(true);
                     });
 
                     this.body.setVelocity(0);
