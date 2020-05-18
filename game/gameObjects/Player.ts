@@ -17,9 +17,15 @@ class Player extends Phaser.GameObjects.Sprite implements GameObjectBody {
     private spawn: Phaser.Math.Vector2;
     public health: number;
     public group: Phaser.GameObjects.Group;
+    private bombDown: boolean;
+    private slashDown: boolean;
 
     constructor(scene: Phaser.Scene, x: number, y: number, color: string = 'green', isMainPlayer: boolean = false) {
         super(scene, x, y, SPRITESHEET.KNIGHT[color].key);
+
+        this.bombDown = false;
+
+        this.slashDown = false;
 
         this.spawn = new Phaser.Math.Vector2(x, y);
 
@@ -162,29 +168,67 @@ class Player extends Phaser.GameObjects.Sprite implements GameObjectBody {
 
     private updateControl() {
         if (this.body instanceof Phaser.Physics.Arcade.Body) {
+            let gamepad = navigator.getGamepads()[0];
+
             if(!this.isHit) {
-                this.body.setVelocity(0);
+                if(gamepad != null) {
+                    this.body.setVelocity(gamepad.axes[0] * 70, gamepad.axes[1] * 70);
+                } else {
+                    this.body.setVelocity(0);
+                }
+
+                let keyboard = false;
+                
 
                 if (Player.keyboard.left.isDown || Player.keyboard.leftleft.isDown) {
                     this.body.setVelocityX(-1);
+                    keyboard = true;
                 }
     
                 if (Player.keyboard.right.isDown || Player.keyboard.rightright.isDown) {
                     this.body.setVelocityX(1);
+                    keyboard = true;
                 }
     
                 if (Player.keyboard.up.isDown || Player.keyboard.upup.isDown) {
                     this.body.setVelocityY(-1);
+                    keyboard = true;
                 }
     
                 if (Player.keyboard.down.isDown || Player.keyboard.downdown.isDown) {
                     this.body.setVelocityY(1);
+                    keyboard = true;
                 }
     
-                if(Player.keyboard.run.isDown) {
-                    this.body.velocity.normalize().scale(90);
+                if(keyboard) {
+                    if(Player.keyboard.run.isDown) {
+                        this.body.velocity.normalize().scale(90);
+                    } else {
+                        this.body.velocity.normalize().scale(70);
+                    }
+                }
+            }
+
+            if(gamepad) {
+                if(gamepad.buttons[2].pressed) {
+                    if(!this.bombDown) {
+                        this.bombDown = true;
+                        new Bomb(this.scene, this.x + 8, this.y + 8, this.body.velocity);
+                    }
                 } else {
-                    this.body.velocity.normalize().scale(70);
+                    this.bombDown = false;
+                }
+
+                if(gamepad.buttons[0].pressed) {
+                    if(!this.slashDown) {
+                        this.slashDown = true;
+                        let direction = this.body.velocity.clone().normalize();
+                        direction.scale(30);
+        
+                        new Slash(this.scene, this.x + 8 + direction.x, this.y + 8 + direction.y, direction);
+                    }
+                } else {
+                    this.slashDown = false;
                 }
             }
 

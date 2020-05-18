@@ -294,7 +294,7 @@ class GameScene extends Phaser.Scene {
         let mapGenerator = new MapGenerator(this);
         mapGenerator.generate();
 
-        this.cameras.main.setZoom(8);
+        this.cameras.main.setZoom(5);
 
         this.cameras.main.startFollow(Player.colliders.children.entries[0]);
 
