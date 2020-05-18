@@ -251,6 +251,7 @@ class GameScene extends Phaser.Scene {
         this.physics.add.overlap(Chest.colliders, Player.colliders, () => { }, (chest: Chest, player: Player) => {
             chest.open();
             player.heal();
+            player.spawn = new Phaser.Math.Vector2(player.x, player.y);
             this.chestCollected += 1;
         });
 

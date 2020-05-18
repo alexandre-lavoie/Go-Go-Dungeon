@@ -14,7 +14,7 @@ class Player extends Phaser.GameObjects.Sprite implements GameObjectBody {
     private color: string;
     private isHit: boolean;
     private isInvinsible: boolean;
-    private spawn: Phaser.Math.Vector2;
+    public spawn: Phaser.Math.Vector2;
     public health: number;
     public group: Phaser.GameObjects.Group;
     private bombDown: boolean;
